@@ -1,4 +1,6 @@
 import 'package:conference_app/core/routing/routes.dart';
+import 'package:conference_app/core/theme/app_style.dart';
+import 'package:conference_app/core/utils/colors.dart';
 import 'package:conference_app/features/home/ui/widgets/custom_button.dart';
 import 'package:conference_app/features/home/ui/widgets/qr_scanner_screen.dart';
 import 'package:flutter/material.dart';
@@ -39,6 +41,29 @@ class HomeBodyView extends StatelessWidget {
                 // التنقل إلى InfoView
                 GoRouter.of(context).push(Routes.infoView);
               },
+            ),
+            SizedBox(height: 20),
+            FadeInUp(
+              delay: const Duration(milliseconds: 300),
+              child: Text('Made by'),
+            ),
+            FadeInUp(
+              delay: const Duration(milliseconds: 300),
+              child: Text(
+                'Mina Yasser - 01159091340',
+                style: AppTextStyles.styleBold16sp(
+                  context,
+                ).copyWith(color: ColorsTheme().primaryColor),
+              ),
+            ),
+            FadeInUp(
+              delay: const Duration(milliseconds: 300),
+              child: Text(
+                'Arsany Gerges - 01206480041',
+                style: AppTextStyles.styleBold16sp(
+                  context,
+                ).copyWith(color: ColorsTheme().primaryColor),
+              ),
             ),
           ],
         ),
