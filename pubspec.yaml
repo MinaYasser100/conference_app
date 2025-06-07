@@ -88,10 +88,10 @@ flutter:
 flutter_icons:
   android: true
   ios: true
-  image_path_android: "assets/images/app_logo.png"
-  image_path_ios: "assets/images/app_logo.png"
+  image_path_android: "assets/images/app_logo_square.png"
+  image_path_ios: "assets/images/app_logo_square.png"
   adaptive_icon_background: "#ffffff" # لون الخلفية للأيقونات التكيفية (Adaptive Icons)
-  adaptive_icon_foreground: "assets/images/app_logo.png"
+  adaptive_icon_foreground: "assets/images/app_logo_square.png"
 
 flutter_native_splash:
   # Customize the parameters below, and run the following command in the terminal:
