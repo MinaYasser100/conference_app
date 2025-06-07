@@ -1,4 +1,4 @@
-import 'package:conference_app/features/home/manager/cubit/scanner_cubit.dart';
+import 'package:conference_app/features/home/manager/scanner_cubit/scanner_cubit.dart';
 import 'package:conference_app/features/home/ui/widgets/show_name_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';

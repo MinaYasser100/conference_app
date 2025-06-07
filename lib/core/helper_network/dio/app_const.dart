@@ -1,8 +1,16 @@
 class AppConst {
-  static const baseUrl = 'https://perenual.com';
-  static const endPointSpecies =
-      '/api/species-list?key=sk-YbiM6748e75eb2acf7817&page=';
-  static speciesDetailsEntPoint(int id) {
-    return '/api/species/details/$id?key=sk-YXhc673e41a3b8a1b7704';
+  // Singleton instance
+  static final AppConst _instance = AppConst._internal();
+
+  // Private constructor
+  AppConst._internal();
+
+  // Factory constructor to return the same instance
+  factory AppConst() {
+    return _instance;
   }
+
+  // Constants
+  static const String baseUrl = 'http://ucan.runasp.net/api/Brother/';
+  static const String updatePoints = '/updatepoints';
 }
