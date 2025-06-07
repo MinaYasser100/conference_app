@@ -19,16 +19,12 @@ class BrotherInfoCubit extends Cubit<BrotherInfoState> {
 
   Future<void> fetchBrothers() async {
     if (!context.mounted) {
-      print('Context not mounted, aborting fetchBrothers');
       return;
     }
 
-    print('Fetching brothers...');
     final connectivityState = BlocProvider.of<ConnectivityCubit>(context).state;
-    print('Connectivity state: $connectivityState');
 
     if (connectivityState is! ConnectivityConnected) {
-      print('No internet connection');
       emit(BrotherInfoFailure('لا يوجد اتصال بالإنترنت'));
       _startPeriodicInternetCheck();
       return;
@@ -37,11 +33,9 @@ class BrotherInfoCubit extends Cubit<BrotherInfoState> {
     try {
       emit(BrotherInfoLoading());
       final brothers = await brotherInfoRepo.getBrothers();
-      print('Brothers fetched: ${brothers.length}');
       emit(BrotherInfoSuccess(brothers));
       _cancelInternetCheck();
     } catch (e) {
-      print('Error fetching brothers: $e');
       emit(BrotherInfoFailure('فشل تحميل البيانات: $e'));
       if (context.mounted) {
         customOverlay(
@@ -58,19 +52,16 @@ class BrotherInfoCubit extends Cubit<BrotherInfoState> {
 
   void _startPeriodicInternetCheck() {
     _cancelInternetCheck();
-    print('Starting periodic internet check');
     _internetCheckTimer = Timer.periodic(const Duration(seconds: 2), (
       timer,
     ) async {
       if (!context.mounted) {
-        print('Context not mounted, stopping timer');
         timer.cancel();
         return;
       }
       final connectivityState =
           BlocProvider.of<ConnectivityCubit>(context).state;
       if (connectivityState is ConnectivityConnected) {
-        print('Internet connected, fetching brothers');
         await fetchBrothers();
         timer.cancel();
       }
@@ -80,7 +71,6 @@ class BrotherInfoCubit extends Cubit<BrotherInfoState> {
   void _cancelInternetCheck() {
     _internetCheckTimer?.cancel();
     _internetCheckTimer = null;
-    print('Cancelled internet check timer');
   }
 
   @override
