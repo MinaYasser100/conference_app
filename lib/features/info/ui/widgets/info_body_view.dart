@@ -14,35 +14,38 @@ class InfoBodyView extends StatelessWidget {
   Widget build(BuildContext context) {
     return Directionality(
       textDirection: TextDirection.rtl,
-      child: BlocConsumer<BrotherInfoCubit, BrotherInfoState>(
-        listener: (context, state) {
-          if (state is BrotherInfoFailure) {
-            customOverlay(
-              snakbarModel: SnakBarModel(
-                context: context,
-                text: state.errorMessage,
-                isSuccess: false,
+      child: RefreshIndicator(
+        onRefresh: () => context.read<BrotherInfoCubit>().fetchBrothers(),
+        child: BlocConsumer<BrotherInfoCubit, BrotherInfoState>(
+          listener: (context, state) {
+            if (state is BrotherInfoFailure) {
+              customOverlay(
+                snakbarModel: SnakBarModel(
+                  context: context,
+                  text: state.errorMessage,
+                  isSuccess: false,
+                ),
+              );
+            }
+          },
+          builder: (context, state) {
+            if (state is BrotherInfoLoading) {
+              return const Center(child: CircularProgressIndicator());
+            } else if (state is BrotherInfoSuccess) {
+              return BrotherInfoListView(brothers: state.brothers);
+            } else if (state is BrotherInfoFailure) {
+              return FailureBorhterInfoWidget(errorMessage: state.errorMessage);
+            }
+            return Center(
+              child: CustomButton(
+                text: 'تحميل البيانات',
+                onPressed: () {
+                  context.read<BrotherInfoCubit>().fetchBrothers();
+                },
               ),
             );
-          }
-        },
-        builder: (context, state) {
-          if (state is BrotherInfoLoading) {
-            return const Center(child: CircularProgressIndicator());
-          } else if (state is BrotherInfoSuccess) {
-            return BrotherInfoListView(brothers: state.brothers);
-          } else if (state is BrotherInfoFailure) {
-            return FailureBorhterInfoWidget(errorMessage: state.errorMessage);
-          }
-          return Center(
-            child: CustomButton(
-              text: 'تحميل البيانات',
-              onPressed: () {
-                context.read<BrotherInfoCubit>().fetchBrothers();
-              },
-            ),
-          );
-        },
+          },
+        ),
       ),
     );
   }
