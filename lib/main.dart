@@ -1,3 +1,4 @@
+import 'package:conference_app/core/dependency_injection/setup_locator.dart';
 import 'package:conference_app/core/routing/app_router.dart';
 import 'package:conference_app/core/routing/routes.dart';
 import 'package:conference_app/core/utils/theme_data_func.dart';
@@ -7,6 +8,7 @@ import 'package:go_router/go_router.dart';
 
 void main() async {
   await ScreenUtil.ensureScreenSize();
+  setupLocator();
   runApp(const MyApp());
 }
 
