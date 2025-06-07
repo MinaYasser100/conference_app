@@ -31,6 +31,7 @@ class ShowNameScreen extends StatelessWidget {
                 ),
               ),
               SelectPointsWidget(),
+              SizedBox(height: 20),
               CustomButton(text: 'Send', onPressed: () {}),
             ],
           ),

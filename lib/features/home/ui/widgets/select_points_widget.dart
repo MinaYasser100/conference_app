@@ -1,3 +1,4 @@
+import 'package:conference_app/core/theme/app_style.dart';
 import 'package:conference_app/core/utils/colors.dart';
 import 'package:conference_app/features/home/manager/select_point_cubit/select_point_cubit.dart';
 import 'package:flutter/material.dart';
@@ -33,9 +34,15 @@ class SelectPointsWidget extends StatelessWidget {
     return ElevatedButton(
       onPressed: () {
         context.read<SelectPointCubit>().selectNumberPoint(number);
-        ScaffoldMessenger.of(
-          context,
-        ).showSnackBar(SnackBar(content: Text('تم اختيار الرقم $number')));
+        ScaffoldMessenger.of(context).showSnackBar(
+          SnackBar(
+            content: Text(
+              'تم اختيار الرقم $number',
+              style: AppTextStyles.styleBold18sp(context),
+            ),
+            backgroundColor: ColorsTheme().primaryColor,
+          ),
+        );
       },
       style: ElevatedButton.styleFrom(
         backgroundColor: isSelect ? ColorsTheme().primaryColor : null,
