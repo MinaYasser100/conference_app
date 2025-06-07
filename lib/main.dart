@@ -21,6 +21,7 @@ class MyApp extends StatelessWidget {
       child: MaterialApp.router(
         theme: themeDataFunc(),
         debugShowCheckedModeBanner: false,
+        locale: const Locale('ar'),
         routerConfig: GoRouter(
           routes: AppRouter.routes,
           initialLocation: Routes.splash,

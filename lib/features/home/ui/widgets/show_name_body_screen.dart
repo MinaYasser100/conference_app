@@ -60,7 +60,7 @@ class ShowNameBodyScreen extends StatelessWidget {
               state is SendPointsLoading
                   ? const CircularProgressIndicator()
                   : CustomButton(
-                    text: 'Send',
+                    text: 'ارسال',
                     onPressed: () {
                       final selectPointState =
                           context.read<SelectPointCubit>().state;
