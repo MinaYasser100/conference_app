@@ -30,9 +30,9 @@ class ConnectivityCubit extends Cubit<ConnectivityState> {
 
   /// مراقبة تغييرات الاتصال مع تقليل عدد الإشعارات باستخدام debounce
   void _monitorConnectivityChanges() {
-    _connectivitySubscription = Connectivity()
-        .onConnectivityChanged
-        .listen((List<ConnectivityResult> result) async {
+    _connectivitySubscription = Connectivity().onConnectivityChanged.listen((
+      List<ConnectivityResult> result,
+    ) async {
       await _handleConnectivityChange(result);
     });
   }
@@ -50,11 +50,13 @@ class ConnectivityCubit extends Cubit<ConnectivityState> {
 
   /// التعامل مع التغيرات في حالة الاتصال
   Future<void> _handleConnectivityChange(
-      List<ConnectivityResult> connectivityResults) async {
+    List<ConnectivityResult> connectivityResults,
+  ) async {
     // التحقق إذا كانت هناك أي نتيجة جديدة في قائمة النتائج
-    final connectivityResult = connectivityResults.isNotEmpty
-        ? connectivityResults.first
-        : ConnectivityResult.none;
+    final connectivityResult =
+        connectivityResults.isNotEmpty
+            ? connectivityResults.first
+            : ConnectivityResult.none;
 
     if (connectivityResult != _lastConnectivityResult) {
       _lastConnectivityResult = connectivityResult;

@@ -1,5 +1,3 @@
-
-
 import 'cubit/internet_check__cubit.dart';
 
 class ConnectivityService {

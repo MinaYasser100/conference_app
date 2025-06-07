@@ -16,7 +16,8 @@ class CustomTextFormField extends StatelessWidget {
     required this.valedate,
     this.autoValidateMode = AutovalidateMode.onUserInteraction,
     this.onTap,
-    this.obscureText, this.autoValidate = false,
+    this.obscureText,
+    this.autoValidate = false,
   });
 
   final TextEditingController controller;
@@ -45,14 +46,12 @@ class CustomTextFormField extends StatelessWidget {
       onTap: onTap,
       obscuringCharacter: obscuringCharacter ?? '.',
       decoration: InputDecoration(
-        suffixIcon: suffixIcon != null
-            ? IconButton(
-                onPressed: suffixPressed,
-                icon: suffixIcon!,
-              )
-            : null,
+        suffixIcon:
+            suffixIcon != null
+                ? IconButton(onPressed: suffixPressed, icon: suffixIcon!)
+                : null,
         hintText: hintText,
-        hintStyle:AppTextStyles.styleMedium16sp(context),
+        hintStyle: AppTextStyles.styleMedium16sp(context),
         border: buildOutlineInputBorder(),
         enabledBorder: buildOutlineInputBorder(),
         focusedBorder: buildOutlineInputBorder(),
@@ -63,9 +62,7 @@ class CustomTextFormField extends StatelessWidget {
   OutlineInputBorder buildOutlineInputBorder() {
     return OutlineInputBorder(
       borderRadius: BorderRadius.circular(8),
-      borderSide: const BorderSide(
-        color: Color(0xFFDCDCDC),
-      ),
+      borderSide: const BorderSide(color: Color(0xFFDCDCDC)),
     );
   }
 }

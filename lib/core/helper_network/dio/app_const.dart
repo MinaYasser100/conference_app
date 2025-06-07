@@ -13,4 +13,5 @@ class AppConst {
   // Constants
   static const String baseUrl = 'http://ucan.runasp.net/api/Brother/';
   static const String updatePoints = '/updatepoints';
+  static const String getAllBrothers = '/getAllBrothers';
 }

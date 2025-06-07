@@ -1,5 +1,3 @@
-
-
 import 'package:flutter/material.dart';
 
 class CustomErrorWidget extends StatelessWidget {
@@ -11,9 +9,7 @@ class CustomErrorWidget extends StatelessWidget {
     return Text(
       errorMessage,
       textAlign: TextAlign.center,
-      style: const TextStyle(
-        fontSize: 20,
-      ),
+      style: const TextStyle(fontSize: 20),
     );
   }
 }

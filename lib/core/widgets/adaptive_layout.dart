@@ -1,6 +1,3 @@
-
-
-
 import 'package:flutter/material.dart';
 
 class AdaptiveLayout extends StatelessWidget {
@@ -18,7 +15,7 @@ class AdaptiveLayout extends StatelessWidget {
       builder: (BuildContext context, constraints) {
         if (constraints.maxWidth < 800) {
           return mobileLayout(context);
-        } else if (constraints.maxWidth < 1100){
+        } else if (constraints.maxWidth < 1100) {
           return tabletLayout(context);
         } else {
           return desktopLayout(context);
