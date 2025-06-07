@@ -1,4 +1,5 @@
 import 'package:conference_app/features/home/ui/home_view.dart';
+import 'package:conference_app/features/info/ui/info_view.dart';
 import 'package:conference_app/features/splash/ui/splash_view.dart';
 import 'package:go_router/go_router.dart';
 
@@ -19,6 +20,13 @@ abstract class AppRouter {
       path: Routes.splash,
       pageBuilder: (context, state) {
         return fadeTransitionPage(SplashView());
+      },
+    ),
+    GoRoute(
+      name: 'infoView',
+      path: Routes.infoView,
+      pageBuilder: (context, state) {
+        return fadeTransitionPage(InfoView());
       },
     ),
   ];
